@@ -1,0 +1,16 @@
+<html>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</html>
+<body>
+    <div class="container">
+        <a href="/"><img th:src="@{/Afbeelding1-1.jpg}" style="width:100%" /></a>
+        <h2>Service Oriented Architecture Blog</h2>
+        <h3 th:text="${blog.title}">Blog Title</h3>
+        <p th:text="${blog.content}">Blog content</p>
+        <hr>
+        <div th:each="comment: ${blog.comments}">
+            <b th:text="${comment.author}">Comment A</b><br/>
+            <small th:text="${comment.comment}"></small><br>---<br>
+        </div>
+    </div>
+</body>
