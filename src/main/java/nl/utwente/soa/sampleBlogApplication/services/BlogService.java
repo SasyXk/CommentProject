@@ -32,7 +32,7 @@ public class BlogService {
                 "Content 1",
                 Arrays.asList(
                     new Comment(1L, "Leon", "Nice blog"),
-                    new Comment(1L, "Leon",  "Wow awesome blog")
+                    new Comment(2L, "Leon",  "Wow awesome blog")
                 )
             )
         );
@@ -43,8 +43,8 @@ public class BlogService {
                 "summary 2",
                 "Content 2",
                 Arrays.asList(
-                    new Comment(1L, "Leon",  "Stupid post"),
-                    new Comment(1L, "Leon",  "Test 2")
+                    new Comment(3L, "Leon",  "Stupid post"),
+                    new Comment(4L, "Leon",  "Test 2")
                 )
             )
         );
