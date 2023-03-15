@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+// The following annotations are from lombok (https://projectlombok.org/)
+// They automatically generate Getters and Setters for the objects.
 @Getter
 @Setter
 @AllArgsConstructor
