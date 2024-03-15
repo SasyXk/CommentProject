@@ -1,5 +1,8 @@
 plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+<<<<<<< HEAD
 <<<<<<< HEAD
 	id 'org.springframework.boot' version '2.7.9'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
@@ -7,6 +10,8 @@ plugins {
 	id 'org.springframework.boot' version '3.2.0'
 	id 'io.spring.dependency-management' version '1.1.4'
 >>>>>>> 5fd5418 (Updated software versions)
+=======
+>>>>>>> 8ba8187 (Revert "Updated software versions")
 }
 group = 'nl.utwente.soa'
 <<<<<<< HEAD
@@ -14,6 +19,7 @@ version = '0.0.2'
 sourceCompatibility = '17'
 =======
 version = '0.0.1-SNAPSHOT'
+<<<<<<< HEAD
 
 
 configurations {
@@ -22,12 +28,16 @@ configurations {
 	}
 }
 >>>>>>> 5fd5418 (Updated software versions)
+=======
+sourceCompatibility = '11'
+>>>>>>> 8ba8187 (Revert "Updated software versions")
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+<<<<<<< HEAD
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 <<<<<<< HEAD
 
@@ -39,8 +49,15 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 >>>>>>> 5fd5418 (Updated software versions)
+=======
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	compileOnly 'org.projectlombok:lombok:1.18.12'
+	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+>>>>>>> 8ba8187 (Revert "Updated software versions")
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
 }
