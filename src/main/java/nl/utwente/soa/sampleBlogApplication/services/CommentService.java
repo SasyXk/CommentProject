@@ -29,7 +29,8 @@ public class CommentService {
     @PostConstruct
     public void commentSetUp(){
         String endpoint = "http://localhost:8080/SubscribePlugin";
-        String url = "http://localhost:8081/comments/";
+        String url = "http://localhost:8082/comments/";
+        String checkUrl = "http://localhost:8082/health";
         String name = "comment";
         comments.add(
             new Comment(1L, 1L, "Leon", "Nice blog")
@@ -49,7 +50,7 @@ public class CommentService {
                                        .collect(Collectors.toSet());
         uniqueBlogIndex.forEach(blogId -> {
             String fullUrl = url + blogId;
-            restTemplate.postForObject(endpoint + "?name=" + name + "&url=" + fullUrl, null, String.class);
+            restTemplate.postForObject(endpoint + "?name=" + name + "&url=" + fullUrl + "&checkUrl=" + checkUrl, null, String.class);
         });
     }
 
