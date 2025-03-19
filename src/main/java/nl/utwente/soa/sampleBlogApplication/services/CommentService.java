@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,8 +24,13 @@ public class CommentService {
     //private static List<Blog> blogs = new ArrayList<>();
     private static List<Comment> comments = new ArrayList<>();
 
+    @Autowired private RestTemplate restTemplate;
+
     @PostConstruct
     public void commentSetUp(){
+        String endpoint = "http://localhost:8080/SubscribePlugin";
+        String url = "http://localhost:8081/comments/";
+        String name = "comment";
         comments.add(
             new Comment(1L, 1L, "Leon", "Nice blog")
         );
@@ -37,6 +43,14 @@ public class CommentService {
         comments.add(
             new Comment(2L, 4L, "Leon",  "Wow awesome 2222")
         );        
+       
+        Set<Long> uniqueBlogIndex = comments.stream()
+                                       .map(Comment::getBlogId)
+                                       .collect(Collectors.toSet());
+        uniqueBlogIndex.forEach(blogId -> {
+            String fullUrl = url + blogId;
+            restTemplate.postForObject(endpoint + "?name=" + name + "&url=" + fullUrl, null, String.class);
+        });
     }
 
     public List<Comment> getCommentsByIdBlog(Long blogId){
