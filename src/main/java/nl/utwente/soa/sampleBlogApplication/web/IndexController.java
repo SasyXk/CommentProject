@@ -25,4 +25,15 @@ public class IndexController {
         return ResponseEntity.ok("Comment Service is online");
     }
 
+    @GetMapping("/checkComment/{blogid}")
+    public ResponseEntity<String> healthCheck( @PathVariable("blogid") Long blogId){
+        boolean result =  commentService.checkComment(blogId);
+        if(result){
+            return ResponseEntity.status(HttpStatus.OK).body("Can delete the Blog.");
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied.");
+        }
+    }
+
 }

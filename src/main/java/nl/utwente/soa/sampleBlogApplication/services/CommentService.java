@@ -31,6 +31,7 @@ public class CommentService {
         String endpoint = "http://localhost:8080/SubscribePlugin";
         String url = "http://localhost:8082/comments/";
         String checkUrl = "http://localhost:8082/health";
+        String checkDeleteUrl = "http://localhost:8082/checkComment/";
         String name = "comment";
         comments.add(
             new Comment(1L, 1L, "Leon", "Nice blog")
@@ -48,13 +49,21 @@ public class CommentService {
         Set<Long> uniqueBlogIndex = comments.stream()
                                        .map(Comment::getBlogId)
                                        .collect(Collectors.toSet());
+        //uniqueBlogIndex.add(3L);                              
         uniqueBlogIndex.forEach(blogId -> {
             String fullUrl = url + blogId;
-            restTemplate.postForObject(endpoint + "?name=" + name + "&url=" + fullUrl + "&checkUrl=" + checkUrl, null, String.class);
+            restTemplate.postForObject(endpoint + "?name=" + name + "&url=" + fullUrl + "&checkUrl=" + checkUrl + "&checkDeleteUrl=" + checkDeleteUrl, null, String.class);
         });
     }
 
     public List<Comment> getCommentsByIdBlog(Long blogId){
         return comments.stream().filter(comment -> comment.getBlogId() == blogId).collect(Collectors.toList());
+    }
+
+    public boolean checkComment(Long blogId){
+        List<Comment> commentsForBlog = comments.stream()
+                                        .filter(comment -> comment.getBlogId().equals(blogId))
+                                        .collect(Collectors.toList());
+        return commentsForBlog.isEmpty();
     }
 }
